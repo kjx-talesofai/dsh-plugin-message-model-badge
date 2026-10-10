@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # engines say ">=22"; 24 is included so a future runtime shift shows up here
+        node: [22, 24]
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: ${{ matrix.node }}
+
+      # No install step by design: the plugin has zero dependencies, and its
+      # browser half ships as hand-written source rather than a build artifact,
+      # so the suite runs on a bare checkout. `cache: npm` is deliberately absent
+      # for the same reason — there is no lockfile to key a cache on.
+      - run: npm test
+
+      - name: The tarball ships only runtime files
+        # `files` is hand-maintained; this is the regression guard for it. Exact
+        # shipped paths, so a moved icon or a dropped dictionary fails here too.
+        run: |
+          npm pack --dry-run > "$RUNNER_TEMP/pack.txt" 2>&1
+          cat "$RUNNER_TEMP/pack.txt"
+          for expected in client.js index.js cordis.patch.yml assets/icon.svg locale/en.json locale/zh.json; do
+            grep -qF "$expected" "$RUNNER_TEMP/pack.txt" || { echo "::error::missing from the tarball: $expected"; exit 1; }
+          done
+          for dev_only in 'tools/' 'tests/' 'plugin.test'; do
+            if grep -qF "$dev_only" "$RUNNER_TEMP/pack.txt"; then
+              echo "::error::dev-only file in the tarball: $dev_only"
+              exit 1
+            fi
+          done

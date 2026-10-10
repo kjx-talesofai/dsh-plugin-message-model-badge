@@ -1,0 +1,9 @@
+# dsh-plugin-message-model-badge — bundle layer.
+#
+# One row mounts the package. It is dual-face: the Host half registers the
+# `messageModel` session projection (the fold over `assistant/message`), and the
+# `dsh.client` declaration makes the harness serve the browser half that renders
+# the projected label in the assistant message's action row.
+- insert:
+    - id: message-model-badge
+      name: 'dsh-plugin-message-model-badge'

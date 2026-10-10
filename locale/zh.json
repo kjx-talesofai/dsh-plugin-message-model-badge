@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "消息模型标识",
+    "description": "在消息操作行里显示产出这条回复的 provider 和 model。"
+  }
+}

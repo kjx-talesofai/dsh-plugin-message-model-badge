@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Message Model Badge",
+    "description": "Shows which provider and model produced a reply, in its action row."
+  }
+}
