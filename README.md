@@ -31,11 +31,11 @@ See which **provider and model produced a reply** — `deepseek-official/deepsee
 ## Install
 
 ```text
-github:kjx-talesofai/dsh-plugin-message-model-badge#v0.1.0
+github:kjx-talesofai/dsh-plugin-message-model-badge#v0.1.1
 ```
 
 ```sh
-dsh plugin --profile desktop add github:kjx-talesofai/dsh-plugin-message-model-badge#v0.1.0
+dsh plugin --profile desktop add github:kjx-talesofai/dsh-plugin-message-model-badge#v0.1.1
 ```
 
 Then **restart the desktop app**. A local checkout works too, with an absolute path. Upgrading is uninstall-then-install.
@@ -48,7 +48,7 @@ Requires **DSH Desktop ≥ 0.2.0-rc.1 and < 0.3.0**.
 npm test    # node:test — no install needed, and nothing to build
 ```
 
-The suite drives the projection fold directly and the browser half through the loader shape it ships in. It does **not** cover the harness end — that the projection arrives in a real browser, or how the label looks in the row. That was confirmed by hand on **macOS (Apple Silicon) · DSH Desktop 0.2.0-rc.2**: `bailian/qwen3.5-27b` in a subagent Session, `deepseek-official/deepseek-flash` in a normal one.
+The suite drives the projection fold directly and the browser half through the loader shape it ships in. It does **not** cover the harness end — that the projection arrives in a real browser, or how the label looks in the row. That was confirmed by hand on **macOS (Apple Silicon) · DSH Desktop 0.2.0-rc.2**: `bailian/qwen3.5-27b` in a subagent Session, `deepseek-official/deepseek-flash` in a normal one. On 0.2.1-rc.2 the action-row seat is still taken by the badge.
 
 ## License
 

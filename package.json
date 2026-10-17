@@ -1,6 +1,6 @@
 {
   "name": "dsh-plugin-message-model-badge",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "description": "Show which provider and model produced a reply, in the message's own action row.",
   "license": "MIT",
